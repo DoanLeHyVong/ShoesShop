@@ -1,0 +1,93 @@
+﻿@model Websitebangiay.Models.Donhang
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Chi tiết đơn hàng</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Họ Tên
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nguoidung.Hoten)
+        </dd>
+
+
+        <dt>
+            Ngày đặt
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ngaydat)
+        </dd>
+
+        <dt>
+            Tình trạng đơn hàng
+        </dt>
+
+        <dd>
+            @{
+                if (Model.Tinhtrang == 0)
+                {
+                    <div style="color:red">Đang chờ xác nhận</div>
+                }
+                else if (Model.Tinhtrang == 1)
+                {
+
+
+                    <div style="color:slateblue">Đã xác nhận</div>
+
+                }
+                else
+                {
+                    <div style="color:red">Đang chờ xác nhận</div>
+
+                }
+            }
+        </dd>
+
+        <dt>
+            Thanh toán
+        </dt>
+
+        <dd>
+            @{
+                if (Model.Thanhtoan == 1)
+                {
+                    <div style="color:red">Thanh toán tiền mặt</div>
+                }
+                else if (Model.Thanhtoan == 2)
+                {
+                    <div style="color:slateblue">Thanh toán quét mã Momo</div>
+
+                }
+            }
+        </dd>
+
+        <dt>
+            Địa chỉ nhận hàng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Diachinhanhang)
+        </dd>
+
+        <dt>
+            Tổng tiền
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tongtien)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <button> @Html.ActionLink("Xác nhận đơn hàng", "Xacnhan", new { id = Model.Madon }) </button>
+</p>

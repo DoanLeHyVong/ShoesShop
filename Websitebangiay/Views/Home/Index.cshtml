@@ -1,0 +1,122 @@
+﻿@model PagedList.IPagedList<Websitebangiay.Models.Sanpham>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Shopping";
+
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SHOE SHOP</title>
+    <!-- CSS  -->
+    <link rel="stylesheet" href="~/Content/css/index.css" />
+    <!-- FONT AWNSOME  -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/WebsiteBanHang.styles.css" asp-append-version="true" />*@
+</head>
+<body>
+    <section class="home" id="home">
+        <div class="slide-container active">
+            <div class="slide">
+                <div class="content">
+                    <span>nike red shoes</span>
+                    <h3>nike metcon shoes</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat
+                        recusandae vel laudantium sequi, est dignissimos veniam aut
+                        maiores illo modi.
+                    </p>
+                </div>
+                <div class="image">
+                    <img src="~/Content/images/home-shoe-1.png" class="shoe" alt="" />
+                    <img src="~/Content/images/home-text-1.png" class="text" alt="" />
+                </div>
+            </div>
+        </div>
+        <div class="slide-container">
+            <div class="slide">
+                <div class="content">
+                    <span>nike blue shoes</span>
+                    <h3>nike metcon shoes</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat
+                        recusandae vel laudantium sequi, est dignissimos veniam aut
+                        maiores illo modi.
+                    </p>
+                </div>
+                <div class="image">
+                    <img src="~/Content/images/home-shoe-2.png" class="shoe" alt="" />
+                    <img src="~/Content/images/home-text-2.png" class="text" alt="" />
+                </div>
+            </div>
+        </div>
+        <div class="slide-container">
+            <div class="slide">
+                <div class="content">
+                    <span>nike yellow shoes</span>
+                    <h3>nike metcon shoes</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat
+                        recusandae vel laudantium sequi, est dignissimos veniam aut
+                        maiores illo modi.
+                    </p>
+                </div>
+                <div class="image">
+                    <img src="~/Content/images/home-shoe-3.png" class="shoe" alt="" />
+                    <img src="~/Content/images/home-text-3.png" class="text" alt="" />
+                </div>
+            </div>
+        </div>
+        <div id="prev" class="fas fa-chevron-left" onclick="prev()"></div>
+        <div id="next" class="fas fa-chevron-right" onclick="next()"></div>
+    </section>
+    <!-- JS  -->
+    <script src="~/Content/js/index.js"></script>
+    <script src="~/Content/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/Content/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+<div class="danhmuc">
+    @Html.Action("DanhmucPartial", "Danhmuc")
+</div>
+
+<div>
+    @using (Html.BeginForm("TimKiemSanPham", "Sanpham", FormMethod.Get))
+    {
+        <div>
+            @Html.TextBox("q", null, new { placeholder = "Tìm kiếm sản phẩm..." })   <input type="submit" value="Tìm kiếm" style="border :1px solid black ; padding :2px" />
+        </div>
+    }
+</div>
+    </p>
+
+    <br />
+
+    <div class="dt">
+
+        @Html.Action("giayadidas", "Sanpham")
+    </div>
+    <div class="dt">
+
+        @Html.Action("giaynike", "Sanpham")
+    </div>
+
+    <div class="dt">
+
+        @Html.Action("giaypuma", "Sanpham")
+    </div>
+
+    <div class="row">
+        <h2> Tin tức sản phẩm</h2>
+    </div>
+
+
+

@@ -1,0 +1,315 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Shop giày</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <link rel=" stylesheet" href="~/Content/Style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    @using Websitebangiay.Models
+
+    <style type="text/css">
+        body {
+            background-color: #F0F0F0;
+        }
+
+        .navbar-inverse {
+            background-color: #39B54A;
+            border-color: #39B54A;
+        }
+
+        .top_header {
+            background-color: black;
+            padding-left: 110px;
+            color: white;
+        }
+
+        .form-inline {
+            float: right;
+            padding-top: 10px;
+        }
+
+        .navbar-inverse .navbar-nav > li > a {
+            color: white;
+            font-size: x-large;
+        }
+
+        .navbar-inverse .navbar-brand {
+            color: white;
+        }
+
+        .navbar-inverse .navbar-nav > li > a {
+            color: white;
+            font-size: large;
+        }
+
+            .navbar-inverse .navbar-nav > li > a:hover {
+                color: black;
+            }
+
+        .navbar-brand {
+            color: cadetblue;
+        }
+
+        .spnoibat {
+            background-color: white;
+        }
+
+            .spnoibat h3 {
+                padding-left: 30px;
+            }
+
+        .giohang {
+            color: white;
+            font-size: 15px;
+        }
+
+        .nav-link:hover {
+            opacity: 0.5;
+            color: black;
+        }
+
+        .container body-content {
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+            display: flex;
+        }
+
+        .cot {
+            display: flex;
+            flex-wrap: wrap;
+            margin-right: -15px;
+            margin-left: -15px;
+        }
+
+        .col-lg-4 {
+            flex: 0 0 33.333333%;
+            max-width: 33.333333%;
+        }
+
+        .col-lg-8 {
+            flex: 0 0 66.666667%;
+            max-width: 66.666667%;
+        }
+
+            .col-lg-8 .col-md-12 {
+                display: flex;
+            }
+
+        .col-md-8 .col-md-4 {
+            position: relative;
+            width: 100%;
+            min-height: 1px;
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+
+        .single-deal {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .justify-content-center {
+            justify-content: center !important;
+        }
+
+        .single-deal .overlay {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            content: "";
+            background: #000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease 0s;
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+
+    @{ var u = Session["UserId"] as Websitebangiay.Models.Nguoidung; }
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+
+        <div class="top_header col-md-12">
+
+
+        </div>
+        <div class="container" style="display: flex;align-items: center; justify-content: space-between; padding: 9px 0px">
+
+            <div class="navbar-header" style="display: flex; gap:5px">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <img class="navbar-brand" src="~/HinhanhSP/fav.png" width="50" height="50" style="padding:0" />
+            </div>
+
+            <div class="navbar-collapse collapse">
+
+
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/Home/Index" title="giay" style="font-size: 15px; color:#000">
+                            <span>HOME</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Home/Contact" title="LIENHE" style="font-size: 15px; color: #000">
+                            <span>LIÊN HỆ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a style="font-size: 15px; color: #000" class="nav-link" href="@Url.Action("Index", "DonHangs")">ĐƠN HÀNG</a>
+                    </li>
+
+                    <li>
+                        @Html.Action("GioHangPartial", "GioHang", new { @class = "giohang" })
+                    </li>
+
+                    <li style="display: flex">
+                        @{ if (u != null)
+                            {
+                                <a style="font-size: 15px" href="@Url.Action("Profile", "User", new { id = u.MaNguoiDung })"> Xin chào : @u.Hoten</a>
+                                <a style="color:red; font-size: 15px" href="/User/DangXuat"> ĐĂNG XUẤT</a>
+                            }
+                            else
+                            {
+                                <a style="font-size: 15px; color: #000" href="/User/Dangnhap"> ĐĂNG NHẬP</a>
+                                <a style="font-size: 15px; color: #000" href="/User/Dangky"> ĐĂNG KÝ</a>
+                            }
+                        }
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <section class="category-area">
+        @RenderBody()
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-12">
+                    <div class="cot">
+                        <div class="col-lg-8 col-md-8">
+                            <div class="single-deal">
+                                <div class="overlay"></div>
+                                <img class="img-fluid w-100"
+                                     src="~/HinhanhSP/c1.jpg"
+                                     alt="" />
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4">
+                            <div class="single-deal">
+                                <div class="overlay"></div>
+                                <img class="img-fluid w-100"
+                                     src="~/HinhanhSP/c2.jpg"
+                                     alt="" />
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4">
+                            <div class="single-deal">
+                                <div class="overlay"></div>
+                                <img class="img-fluid w-100"
+                                     src="~/HinhanhSP/c3.jpg"
+                                     alt="" />
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-md-8">
+                            <div class="single-deal">
+                                <div class="overlay"></div>
+                                <img class="img-fluid w-100 " style="margin-left : 60px"
+                                     src="~/HinhanhSP/c4.jpg"
+                                     alt="" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single-deal">
+                        <div class="overlay"></div>
+                        <img class="img-fluid w-100" style="margin-left:40px" src="~/HinhanhSP/c5.jpg" alt="" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-info" style="padding-left:50px">
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <h2>Bảo hành</h2>
+                <span>Chính sách mua hàng</span>
+                <br />
+                <span>Chính sách bảo hành</span>
+                <br />
+                <span>Trung tâm bảo hành</span>
+                <br />
+                <span>Tra cứu bảo hành</span>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <h2>Liên kết</h2>
+                <span>Tin tức Mobile</span>
+                <br />
+                <span>Lập trình Web</span>
+                <br />
+                <span>GenkVN</span>
+                <br />
+                <span>Dân trí</span>
+
+
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <h2>Thông tin</h2>
+                <span>Về chúng tôi</span>
+                <br />
+                <span>Liên hệ</span>
+                <br />
+                <span>Góp ý</span>
+                <br />
+                <span>Tra cứu</span>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <h2>Theo dõi</h2>
+                <span>Kênh youtube</span>
+                <br />
+                <span>Fanpage</span>
+                <br />
+                <span>Shopee</span>
+                <br />
+                <span>Group</span>
+
+            </div>
+        </div>
+        <hr />
+        <center> <p class="bg-primary">&copy; @DateTime.Now.Year - Shopping</p></center>
+    </footer>
+
+
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

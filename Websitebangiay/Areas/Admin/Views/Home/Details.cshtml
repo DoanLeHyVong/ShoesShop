@@ -1,0 +1,84 @@
+﻿@model Websitebangiay.Models.Sanpham
+
+@{ ViewBag.Title = "Details";
+                Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml"; }
+
+<h2>Thông tin chi tiết</h2>
+
+<div>
+    <h4>Sản phẩm</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Hàng sản xuất
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hangsanxuat.Tenhang)
+        </dd>
+
+        <dt>
+            Tên chất liệu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Chatlieu.Tencl)
+        </dd>
+
+        <dt>
+            Tên sản phẩm
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tensp)
+        </dd>
+
+        <dt>
+            Giá tiền
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Giatien)
+        </dd>
+
+        <dt>
+            Số lượng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Soluong)
+        </dd>
+
+        <dt>
+            Mô tả
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mota)
+        </dd>
+
+
+        <dt>
+            Sản phẩm
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sanphammoi)
+        </dd>
+
+        <dt>
+            Ảnh bìa 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Anhbia)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <button class="btn btn-success">
+        @Html.ActionLink("Sửa sản phẩm", "Edit", new { id = Model.Masp }, new { @style = "color:white;" }) 
+    </button>
+</p>
+

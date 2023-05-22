@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Websitebangiay.Models.Sanpham>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Tên hãng
+        </th>
+        <th>
+            Tên sản phẩm
+        </th>
+        <th>
+            Giá tiền
+        </th>
+        <th>
+            Số lượng
+        </th>
+        <th>
+            Mô tả
+        </th>
+        <th>
+            Sản phẩm mới
+        </th>
+        <th>
+            Ảnh bìa
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hangsanxuat.Tenhang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Chatlieu.Tencl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tensp)
+        </td>
+        <td>
+            @String.Format("{0:0,0}", item.Giatien) VNĐ
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Soluong)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mota)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sanphammoi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Anhbia)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Masp }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Masp }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Masp })
+        </td>
+    </tr>
+}
+
+</table>

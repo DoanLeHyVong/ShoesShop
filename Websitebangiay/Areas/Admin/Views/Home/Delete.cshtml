@@ -1,0 +1,87 @@
+﻿@model Websitebangiay.Models.Sanpham
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Xoá vĩnh viễn sản phẩm</h2>
+
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên hãng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hangsanxuat.Tenhang)
+        </dd>
+
+        <dt>
+            Tên chất liệu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Chatlieu.Tencl)
+        </dd>
+
+        <dt>
+            Tên sản phẩm
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tensp)
+        </dd>
+
+        <dt>
+            Giá tiền
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Giatien)
+        </dd>
+
+        <dt>
+            Số lượng 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Soluong)
+        </dd>
+
+        <dt>
+            Mô tả 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mota)
+        </dd>
+
+        <dt>
+            Sản phẩm
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sanphammoi)
+        </dd>
+
+        <dt>
+            Ảnh bìa 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Anhbia)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xoá sản phẩm" class="btn btn-warning"/> 
+        </div>
+    }
+</div>

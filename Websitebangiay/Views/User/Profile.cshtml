@@ -1,0 +1,70 @@
+﻿@model Websitebangiay.Models.Nguoidung
+
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2 style="margin-left:200px">HỒ SƠ CÁ NHÂN</h2>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Ảnh đại diện
+        </dt>
+
+        <dd>
+            <img src=@Url.Content("~" + @Html.DisplayFor(model => model.Anhdaidien)) class="img-responsive" alt="" width="200" height="200" />
+
+        </dd>
+
+
+        <dt>
+            Họ tên
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hoten)
+        </dd>
+
+        <dt>
+           Email
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            Điện thoại
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dienthoai)
+        </dd>
+
+        <dt>
+            Mật khẩu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Matkhau)
+        </dd>
+
+        <dt>
+            Đìa chỉ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Diachi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <button class="btn btn-primary" style="margin-left:200px">
+        @Html.ActionLink("Chỉnh sửa hồ sơ", "Edit", new { id = Model.MaNguoiDung }, new { @style = "color:white;" })
+    </button>
+    @Html.ActionLink("Back to List", "Index","Home")
+</p>

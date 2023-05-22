@@ -1,0 +1,27 @@
+﻿@using Websitebangiay.Models
+@model Sanpham
+
+
+@{
+    ViewBag.Title = "xemchitiet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+
+    <div style="display: flex;">
+        <div style="width: 50%;">
+            <img src="@Url.Content("~" + @Model.Anhbia)" width="50%", style="margin-left: 230px" />
+        </div>
+        <div style="width: 50%;">
+            <h2>CHI TIẾT SẢN PHẨM</h2>
+            <h3>@Model.Tensp</h3>
+            <h3 style="color:red">Giá: @String.Format("{0:0,0}", @Model.Giatien) VND</h3>
+            <br />
+            <p>@Model.Mota</p>
+            <h4>Chất liệu: @Model.Chatlieu.Tencl</h4>
+            @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMasp = Model.Masp, @strURL = Request.Url.ToString() }))
+            {
+                <input type="submit" value="Mua hàng" id="bgnGioHang" />
+            }
+        </div>
+    </div>

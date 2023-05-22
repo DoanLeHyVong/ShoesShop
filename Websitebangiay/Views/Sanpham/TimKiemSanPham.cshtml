@@ -1,0 +1,34 @@
+﻿@using Websitebangiay.Models;
+@model List<Sanpham>
+@{
+    ViewBag.Title = "TimKiemSanPham";
+}
+
+@if (Model.Count == 0)
+{
+    <p>Không tìm thấy sản phẩm nào.</p>
+}
+else
+{
+<div class=" row">
+    @foreach (var sp in Model)
+    {
+        <div class="col-md-3 col-sm-6">
+            <br />
+            <h3> @sp.Tensp</h3>
+            <h3 style="color:red">Giá: @String.Format("{0:0,0}", sp.Giatien) VND</h3>
+            <br />
+            @sp.Mota
+            <br />
+            <h4>Chất liệu : @sp.Chatlieu.Tencl</h4>
+            <img src="@Url.Content("~" +sp.Anhbia)" width="50%" />
+            @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMasp = sp.Masp, @strURL = Request.Url.ToString() }))
+            {
+                <input type="submit" value="Mua hàng" id="bgnGioHang" />
+
+            }
+        </div>        
+    }
+</div>
+
+}
