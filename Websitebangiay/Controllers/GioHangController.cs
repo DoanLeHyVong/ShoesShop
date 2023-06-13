@@ -263,9 +263,8 @@ namespace Websitebangiay.Controllers
             ddh.Ngaydat = DateTime.Now;
             Chitietdonhang ctDH = new Chitietdonhang();
             ViewBag.tongtien = tongtien;
-            return View(ddh);
             db.SaveChanges();
-
+            return View(ddh);
         }
         public ActionResult Momo()
         {

@@ -4,30 +4,37 @@
     ViewBag.Title = "xemthuonghieu";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link rel="stylesheet" href="~/Content/css/index.css" />
+<!-- FONT AWNSOME  -->
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
 @foreach (var tenhang in ViewBag.listhang)
 {
     <h2>@tenhang.Tenhang</h2>
 }
 
 
-@foreach (var item in Model)
-{
-    <div class="col-md-3 col-sm-6" >
-        <a href="@Url.Action("xemchitiet", "Sanpham", new {@Masp=item.Masp })">
-            <img src=@Url.Content("~" +item.Anhbia.ToString()) class="img-responsive" alt="" width="400" height="200" />
-        </a>
-        <center>
-            <h3>@item.Mota</h3>
-            <h3 style="color:red">Giá: @String.Format("{0:0,0}", @item.Giatien) VND</h3>
-            <br />
-            @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMasp = item.Masp, @strURL = Request.Url.ToString() }))
-            {
-                <input type="submit" value="Mua hàng" id="bgnGioHang" style="border :1px solid black ; padding :2px" />
+<div class="dt">
+    <div class=" row">
+        @foreach (var sp in Model)
+        {
+            <div class="col-md-3 col-sm-6">
+                <br />
+                <h3> @sp.Tensp</h3>
+                <h3 style="color:red">Giá: @String.Format("{0:0,0}", sp.Giatien) VND</h3>
+                <br />
+                @sp.Mota
+                <br />
+                <h4>Chất liệu : @sp.Chatlieu.Tencl</h4>
+                <img src="@Url.Content("~" +sp.Anhbia)" width="50%" />
+                @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMasp = sp.Masp, @strURL = Request.Url.ToString() }))
+                {
+                    <input type="submit" value="Mua hàng" id="bgnGioHang" style="border :1px solid black ; padding :2px" />
 
-            }
-        </center>
-
+                }
+            </div>
+        }
     </div>
-}
+</div>
 
-</table>

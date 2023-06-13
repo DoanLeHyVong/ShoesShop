@@ -3,6 +3,10 @@
 @{
     ViewBag.Title = "TimKiemSanPham";
 }
+<link rel="stylesheet" href="~/Content/css/index.css" />
+<!-- FONT AWNSOME  -->
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 
 @if (Model.Count == 0)
 {
@@ -10,25 +14,26 @@
 }
 else
 {
-<div class=" row">
-    @foreach (var sp in Model)
-    {
-        <div class="col-md-3 col-sm-6">
-            <br />
-            <h3> @sp.Tensp</h3>
-            <h3 style="color:red">Giá: @String.Format("{0:0,0}", sp.Giatien) VND</h3>
-            <br />
-            @sp.Mota
-            <br />
-            <h4>Chất liệu : @sp.Chatlieu.Tencl</h4>
-            <img src="@Url.Content("~" +sp.Anhbia)" width="50%" />
-            @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMasp = sp.Masp, @strURL = Request.Url.ToString() }))
-            {
-                <input type="submit" value="Mua hàng" id="bgnGioHang" />
+<div class="dt">
+    <div class=" row">
+        @foreach (var sp in Model)
+        {
+            <div class="col-md-4 col-sm-6">
+                <br />
+                <h3> @sp.Tensp</h3>
+                <h3 style="color:red">Giá: @String.Format("{0:0,0}", sp.Giatien) VND</h3>
+                <br />
+                @sp.Mota
+                <br />
+                <h4>Chất liệu : @sp.Chatlieu.Tencl</h4>
+                <img src="@Url.Content("~" +sp.Anhbia)" width="50%" />
+                @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMasp = sp.Masp, @strURL = Request.Url.ToString() }))
+                {
+                    <input type="submit" value="Mua hàng" id="bgnGioHang" style="border :1px solid black ; padding :2px" />
 
-            }
-        </div>        
-    }
+                }
+            </div>
+        }
+    </div>
 </div>
-
 }

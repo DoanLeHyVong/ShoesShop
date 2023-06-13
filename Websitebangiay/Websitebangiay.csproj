@@ -1274,6 +1274,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Content\Slide.css" />
     <Content Include="Content\Style.css" />
+    <Content Include="Content\template\send1.html" />
+    <Content Include="Content\template\send2.html" />
     <Content Include="css\Style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
